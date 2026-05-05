@@ -11,6 +11,55 @@
 
 ---
 
+## Live demo — works right now 🦆
+
+**Run this** (after `pip install -e .`):
+
+```python
+from quack import run_quack
+
+result = run_quack('''
+кряк("Привет, кремний!")
+пусть x = 21
+кряк("21 * 2 =", x * 2)
+
+fn факториал(n) {
+    если n <= 1 { вернуть 1 }
+    вернуть n * факториал(n - 1)
+}
+
+кряк("10! =", факториал(10))
+кряк("20! =", факториал(20))
+''')
+
+print(result["output"])
+```
+
+**Real output** (measured on Linux WSL Ubuntu 24.04, Python 3.12.3):
+
+```
+Привет, кремний!
+21 * 2 = 42
+10! = 3628800
+20! = 2432902008176640000
+```
+
+89 tokens · 9 AST nodes · **11 ms** end-to-end on cold cache.
+
+If `unigpu_ffi.dll` is also on the system, GPU primitives are wired in too:
+
+```quack
+кряк("Найдено GPU:", гпу.найди())
+```
+
+```
+Найдено GPU: 3
+```
+
+(One physical AMD RX 7700 XT visible through 3 backends: Direct/D3DKMT, HIP, CPU fallback.)
+
+---
+
 ## What is Quack
 
 **Quack** (КРЯКА) is what happens when you let a duck design a programming language during a long Russian winter.
