@@ -1,0 +1,64 @@
+name: Publish to PyPI 🦆
+
+# This workflow publishes Quack to PyPI on every `v*` tag push.
+#
+# AUTH MODEL: PyPI Trusted Publisher (OIDC). NO API KEY needed.
+# One-time setup (do this once on PyPI.org):
+#
+#   1. Sign in at https://pypi.org/account/login/ (create account if needed)
+#   2. If `quack-lang` doesn't exist yet, request it via:
+#      https://pypi.org/manage/account/publishing/
+#   3. Add a "Pending publisher" with:
+#        Project name:    quack-lang
+#        Owner:           MrSilverDuck
+#        Repository:      quack
+#        Workflow name:   publish.yml
+#        Environment:     pypi
+#   4. Done. Push a v* tag here and PyPI accepts the upload.
+#
+# https://docs.pypi.org/trusted-publishers/
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write   # required for OIDC trusted publishing
+
+jobs:
+  build-and-publish:
+    name: Build wheel + sdist, publish to PyPI
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/quack-lang
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build sdist + wheel
+        run: |
+          python -m build
+          ls -lh dist/
+
+      - name: Verify metadata
+        run: twine check dist/*
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          # No `password:` — OIDC trusted publisher provides the token.
+          print-hash: true
