@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quack-lang"
+version = "0.1.1b1"
+description = "Quack / КРЯКА — a Russian-English mixed programming language with 364 keywords across 9 natural languages."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Nightbox LLC", email = "artem@nightboxllc.com" }]
+requires-python = ">=3.10"
+keywords = ["quack", "kryaka", "russian", "language", "interpreter", "esolang", "silverduck", "nightbox"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Compilers",
+    "Topic :: Software Development :: Interpreters",
+]
+
+[project.urls]
+Homepage = "https://github.com/MrSilverDuck/quack"
+Source   = "https://github.com/MrSilverDuck/quack"
+Tracker  = "https://github.com/MrSilverDuck/quack/issues"
+UniGPU   = "https://github.com/MrSilverDuck/unigpu"
+
+[project.scripts]
+quack = "quack.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["quack*"]

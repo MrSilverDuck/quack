@@ -1,0 +1,120 @@
+# Quack / КРЯКА 🦆
+
+> A Russian-English mixed programming language. Pirate-themed, esoteric,
+> with 364 keywords across 9 natural languages, a teacher mode, and a poet mode.
+>
+> Built by **Nightbox LLC** as part of the [SilverDuck](https://github.com/MrSilverDuck/unigpu) ecosystem.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/MrSilverDuck/quack?include_prereleases)](https://github.com/MrSilverDuck/quack/releases)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://python.org)
+
+---
+
+## What is Quack
+
+**Quack** (КРЯКА) is what happens when you let a duck design a programming language during a long Russian winter.
+
+Most languages pick one human language. Quack picks **nine**: Russian, English, Ukrainian, Spanish, Chinese, French, German, Italian, Japanese — and lets you mix keywords from any of them in the same program. The interpreter doesn't care.
+
+```quack
+кря
+сказать "Привет, мир!"
+let x = 42
+если x > 0 тогда
+    print "positive"
+fin
+```
+
+That's valid Quack. So is the same thing in pure English, or pure Russian, or any mix you like.
+
+### Highlights
+
+- **364 keywords** across 9 languages — pick your dialect
+- **Zoomer mode** — slang aliases (`vibe`, `sus`, `slay`, `кринж`)
+- **Teacher mode** — interactive tutor that explains errors and concepts
+- **Poet mode** — generative writing assistant that speaks Quack
+- **Optional GPU** — falls back to pure Python; uses [UniGPU](https://github.com/MrSilverDuck/unigpu) FFI when available
+- **Pure stdlib** — no runtime dependencies for the core interpreter
+
+## Install
+
+From source (preferred while in beta):
+
+```bash
+git clone https://github.com/MrSilverDuck/quack.git
+cd quack
+pip install -e .
+```
+
+Or from PyPI once published:
+
+```bash
+pip install quack-lang
+```
+
+## Run
+
+```bash
+# Run a .quack file
+python -m quack examples/sample.quack
+
+# Or via the installed entry point
+quack examples/sample.quack
+```
+
+From Python:
+
+```python
+from quack import run_quack
+
+run_quack('''
+    кря
+    let n = 10
+    повторить n раз:
+        сказать "🦆"
+''')
+```
+
+## Modes
+
+| Module | What it does |
+|--------|-------------|
+| `quack.quack` | The core interpreter (`run_quack`, `KEYWORDS`, `TRUTHY_WORDS`) |
+| `quack.quack_vm` | A small bytecode VM and runtime |
+| `quack.quack_teacher` | Interactive teacher mode — explains syntax, errors, idioms |
+| `quack.quack_poet` | Generative poet mode — produces Quack from natural language |
+
+## Examples
+
+See `examples/sample.quack` and `examples/runtime.quack`. Programs in the wild often look like this:
+
+```quack
+кря
+переменная имя = "Captain Silverduck"
+if имя contains "Silver" then
+    сказать "🏴‍☠️ Аррр, я тебя знаю, " + имя
+end
+```
+
+## Status
+
+🟡 **0.1.1-beta** — public source drop. Syntax is largely stable but the keyword tables, especially zoomer-mode aliases, may grow. Issues and PRs welcome.
+
+The optional GPU acceleration looks for `unigpu_ffi.dll` (from the [UniGPU](https://github.com/MrSilverDuck/unigpu) repo). Without it, Quack runs entirely in CPython — no SDKs needed.
+
+## Roadmap
+
+- **0.2.0** — REPL with completion, syntax highlighting in the teacher
+- **0.3.0** — Compiled-bytecode mode via `quack.quack_vm`
+- **0.4.0** — More natural-language packs (Arabic, Hindi, Korean)
+
+## License
+
+[MIT](LICENSE) © 2026 Nightbox LLC.
+
+`Quack` and `КРЯКА` are trademarks of Nightbox LLC. The code is yours under MIT.
+
+---
+
+🦆 *Кря-кря-кря! Кря — на любом языке.*
