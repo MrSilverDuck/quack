@@ -4,6 +4,8 @@
 > with 364 keywords across 9 natural languages, a teacher mode, and a poet mode.
 >
 > Built by **Nightbox LLC** as part of the [SilverDuck](https://github.com/MrSilverDuck/unigpu) ecosystem.
+>
+> Short link: [mrsilverduck.lif-6.com/quack](https://mrsilverduck.lif-6.com/quack)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/MrSilverDuck/quack?include_prereleases)](https://github.com/MrSilverDuck/quack/releases)
