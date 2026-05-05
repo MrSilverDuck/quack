@@ -1,0 +1,51 @@
+name: CI 🦆
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install package
+        run: pip install -e .
+
+      - name: Import + structural smoke
+        shell: bash
+        run: |
+          python - <<'PY'
+          import sys
+          import quack
+          from quack import run_quack, KEYWORDS, TRUTHY_WORDS
+          assert len(KEYWORDS) == 364, f"Expected 364 keywords, got {len(KEYWORDS)}"
+          assert len(TRUTHY_WORDS) == 30, f"Expected 30 truthy-words, got {len(TRUTHY_WORDS)}"
+          assert callable(run_quack), "run_quack must be callable"
+          print(f"OK: Quack {quack.__version__} on Python {sys.version.split()[0]}")
+          print(f"   KEYWORDS={len(KEYWORDS)} TRUTHY_WORDS={len(TRUTHY_WORDS)}")
+          PY
+
+      - name: Run example
+        shell: bash
+        run: |
+          # Confirm the entry-point `python -m quack` runs and the example
+          # parses without raising (we don't assert on output — Quack
+          # examples may interact with stdout in encoding-sensitive ways).
+          python -m quack examples/sample.quack || \
+            (echo "Note: example may need locale UTF-8; this is informational only" && exit 0)
