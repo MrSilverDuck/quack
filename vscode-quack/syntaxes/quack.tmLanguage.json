@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Quack",
+  "scopeName": "source.quack",
+  "fileTypes": [
+    "quack",
+    "kry",
+    "кря"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#operators"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.quack",
+          "match": "#.*$"
+        },
+        {
+          "name": "comment.line.double-slash.quack",
+          "match": "//.*$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.quack",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.quack",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.quack",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.quack",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.quack",
+          "match": "\\b\\d+\\.\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.quack",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.quack",
+          "match": "(?<![\\w])(touch_grass|wprzeciwnym|plot_twist|continuar|kontynuuj|otherwise|preskocit|preskočiť|retourner|but_like|continue|dalej_sk|devolver|kazdy_sk|mientras|przerwij|зупинити|континью|пропусти|сваливай|inaczej|para_es|podczas|solange|tantque|zurueck|абортни|вернуть|крутани|поверни|погнали|ретурни|casser|caught|dopoki|dopóki|pokial|pokiaľ|prerus|preruš|repeat|return|romper|weiter|zastav|zurück|аиначе|віддай|дальше|доколе|допоки|зупини|лупани|покуда|ретёрн|скипни|стоять|хватит|інакше|binge|break|check|falls|gdyby|ghost|grind|jesli|jeśli|kazdy|każdy|každý|oddaj|pokym|pokým|pomin|pomiń|ratio|si_es|si_fr|sinon|sonst|stopp|while|yield|zwroc|zwróć|ďalej|ахули|брейк|верни|выход|ежели|забей|иначе|когда|отдай|плюнь|чекни|each|else|exit|fuer|inac|inak|ináč|keby|loop|pour|sino|skip|spam|stop|vrat|vráť|wenn|yeet|вайл|далі|если|инче|коли|пока|поки|стоп|якщо|dla|for|für|gdy|kym|kým|nvm|pre|sus|для|ифф|раз|рет|фор|чек|элс|if|in|w|в)(?![\\w])"
+        },
+        {
+          "name": "storage.type.quack",
+          "match": "(?<![\\w])(skill_issue|importovat|importovať|its_giving|подключить|fonction|funktion|importuj|допустим|funcion|funkcia|funkcja|zmienna|возьмём|загрузи|запомни|засетай|функция|функція|bestie|import|lowkey|nastav|змінна|импорт|пускай|скажем|імпорт|const|niech|pouzi|použi|quack|sigma|ustaw|берём|задай|конст|нехай|пусть|сетни|func|main|nech|rizz|soit|uzyj|użyj|варр|дефф|кинь|летт|функ|def|let|sea|sei|use|var|хай|fn)(?![\\w])"
+        },
+        {
+          "name": "support.function.builtin.quack",
+          "match": "(?<![\\w])(afficher|imprimir|крякнуть|принтани|скажи_ua|highkey|powiedz|выплюни|drucke|drukuj|povedz|wypisz|виведи|выведи|друкуй|крякни|напиши|орнуть|покажи|kwacz|pokaz|pokaż|print|shout|spill|vypis|vypíš|логни|принт|скажи|coin|cuac|echo|flex|kvak|kvák|kwak|quak|slay|tlac|tlač|vibe|yell|кряк|пиши|kwa|log|say|кря|ори)(?![\\w])"
+        },
+        {
+          "name": "keyword.operator.logical.quack",
+          "match": "(?<![\\w])(alebo|albo|and|lub|not|або|и_и|или|or|не|та)(?![\\w])"
+        },
+        {
+          "name": "constant.language.quack",
+          "match": "(?<![\\w])(undefined|nepravda|ghosted|prazdne|prázdne|неверно|bussin|cringe|falsch|nichts|nie_pl|prawda|verdad|враньё|истина|нифига|ничего|нічого|правда|істина|false|falso|falsz|fałsz|pusto|zaden|żaden|верно|нихуя|ничто|пусто|фигня|хибно|dead|faux|fire|frfr|nada|none|nope|null|ohio|rien|true|void|vrai|wahr|yeah|есть|ложь|ноуп|нулл|нуль|окей|фолс|ano|bet|cap|hej|lit|mid|nah|nic|nil|nič|ong|tak|yep|yes|áno|ага|йеп|неа|нее|нет|тру|угу|no|да|ок)(?![\\w])"
+        },
+        {
+          "name": "support.class.quack",
+          "match": "(?<![\\w])(карточка|видюха|железо|karta|gpu|гпу)(?![\\w])"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.comparison.quack",
+          "match": "==|!=|<=|>=|<|>"
+        },
+        {
+          "name": "keyword.operator.assignment.quack",
+          "match": "="
+        },
+        {
+          "name": "keyword.operator.arithmetic.quack",
+          "match": "\\+|-|\\*|/|%"
+        }
+      ]
+    }
+  }
+}

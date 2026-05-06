@@ -15,7 +15,28 @@
 
 ## Live demo — works right now 🦆
 
-**Run this** (after `pip install -e .`):
+### From the CLI (v0.2.0+)
+
+```bash
+pip install quack-lang
+quack             # interactive REPL with autocomplete
+quack -c "кряк('Привет, кремний!')"
+quack -e gpu_demo # run a bundled example
+quack file.quack  # run a script
+```
+
+Inside the REPL: type `:help` for commands, `:keywords` to browse all 364, `:examples` to discover demos, `:vars` to inspect state. State persists across prompts:
+
+```text
+кря[1]» пусть x = 21
+кря[2]» fn двойной(n) { вернуть n * 2 }
+кря[3]» кряк("x*2 =", двойной(x))
+x*2 = 42
+кря[4]» :exit
+🦆 Кря! Пока!
+```
+
+### From Python
 
 ```python
 from quack import run_quack
@@ -132,9 +153,17 @@ run_quack('''
 | Module | What it does |
 |--------|-------------|
 | `quack.quack` | The core interpreter (`run_quack`, `KEYWORDS`, `TRUTHY_WORDS`) |
+| `quack.repl` | Interactive REPL — `quack` command launches it (`prompt_toolkit`-powered) |
+| `quack.lexer` | Pygments lexer (registered as a `pygments.lexers` entry point) |
 | `quack.quack_vm` | A small bytecode VM and runtime |
 | `quack.quack_teacher` | Interactive teacher mode — explains syntax, errors, idioms |
 | `quack.quack_poet` | Generative poet mode — produces Quack from natural language |
+
+## Editor support
+
+- **VS Code** — install the bundled extension (`vscode-quack/`) for syntax highlighting on `.quack` files. See [`vscode-quack/README.md`](vscode-quack/README.md) for build/install steps.
+- **Sphinx, Jupyter, mkdocs, Pelican, …** — `pip install quack-lang` registers a Pygments lexer; ` ```quack ` code blocks light up automatically.
+- **Anywhere with ANSI** — the REPL itself colorizes input via `prompt_toolkit + pygments`.
 
 ## Examples
 
@@ -150,15 +179,17 @@ end
 
 ## Status
 
-🟡 **0.1.1-beta** — public source drop. Syntax is largely stable but the keyword tables, especially zoomer-mode aliases, may grow. Issues and PRs welcome.
+🟢 **0.2.0** — Interactive REPL with autocomplete across all 364 keywords, Pygments lexer for `.quack` files, VS Code extension, fixed `python -m quack file.quack` output bug.
 
-The optional GPU acceleration looks for `unigpu_ffi.dll` (from the [UniGPU](https://github.com/MrSilverDuck/unigpu) repo). Without it, Quack runs entirely in CPython — no SDKs needed.
+🟡 Syntax is largely stable but the keyword tables, especially zoomer-mode aliases, may grow. Issues and PRs welcome.
+
+The optional GPU acceleration looks for `unigpu_ffi.{so,dll,dylib}` (from the [UniGPU](https://github.com/MrSilverDuck/unigpu) repo). Without it, Quack runs entirely in CPython — no SDKs needed.
 
 ## Roadmap
 
-- **0.2.0** — REPL with completion, syntax highlighting in the teacher
-- **0.3.0** — Compiled-bytecode mode via `quack.quack_vm`
-- **0.4.0** — More natural-language packs (Arabic, Hindi, Korean)
+- **0.2.0** *(this release)* — REPL with completion, Pygments lexer, VS Code grammar
+- **0.3.0** — Compiled-bytecode mode via `quack.quack_vm`, JIT path through UniGPU IR (Quack → AMD/NVIDIA GPU)
+- **0.4.0** — More natural-language packs (Arabic, Hindi, Korean), Marketplace publish for VS Code extension
 
 ## License
 

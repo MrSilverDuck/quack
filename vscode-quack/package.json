@@ -1,0 +1,40 @@
+{
+  "name": "quack-lang",
+  "displayName": "Quack / КРЯКА",
+  "description": "Syntax highlighting for the Quack programming language — 364 keywords across 9 natural languages, by Nightbox LLC.",
+  "version": "0.2.0",
+  "publisher": "nightboxllc",
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": ["Programming Languages"],
+  "keywords": ["quack", "kryaka", "russian", "silverduck", "esolang"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrSilverDuck/quack.git",
+    "directory": "vscode-quack"
+  },
+  "homepage": "https://mrsilverduck.lif-6.com/quack",
+  "bugs": {
+    "url": "https://github.com/MrSilverDuck/quack/issues"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "quack",
+        "aliases": ["Quack", "quack", "КРЯКА", "kryaka"],
+        "extensions": [".quack", ".kry", ".кря"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "quack",
+        "scopeName": "source.quack",
+        "path": "./syntaxes/quack.tmLanguage.json"
+      }
+    ]
+  }
+}

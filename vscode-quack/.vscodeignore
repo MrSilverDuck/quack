@@ -1,0 +1,7 @@
+.vscode/**
+.vscode-test/**
+.gitignore
+.github/**
+generate_grammar.py
+**/*.pyc
+__pycache__/

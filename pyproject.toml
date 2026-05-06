@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "quack-lang"
-version = "0.1.1b1"
+version = "0.2.0"
 description = "Quack / КРЯКА — a Russian-English mixed programming language with 364 keywords across 9 natural languages."
 readme = "README.md"
 license = { text = "MIT" }
@@ -22,15 +22,40 @@ classifiers = [
     "Topic :: Software Development :: Compilers",
     "Topic :: Software Development :: Interpreters",
 ]
+# Core interpreter has zero runtime deps. The REPL pulls in prompt_toolkit
+# + pygments, which we ship in the default install for a one-line `quack`
+# command experience. Both are tiny and pure-Python on every platform.
+dependencies = [
+    "prompt_toolkit>=3.0",
+    "pygments>=2.14",
+]
+
+[project.optional-dependencies]
+# `pip install "quack-lang[gpu]"` for the optional UniGPU acceleration
+# (requires UniGPU's unigpu_ffi.{so,dll,dylib} on the system).
+gpu = []
+
+# `pip install "quack-lang[dev]"` for tests + linting
+dev = [
+    "pytest>=7",
+    "pytest-cov>=4",
+    "ruff>=0.1",
+]
 
 [project.urls]
 Homepage = "https://github.com/MrSilverDuck/quack"
 Source   = "https://github.com/MrSilverDuck/quack"
 Tracker  = "https://github.com/MrSilverDuck/quack/issues"
 UniGPU   = "https://github.com/MrSilverDuck/unigpu"
+ShortLink = "https://mrsilverduck.lif-6.com/quack"
 
 [project.scripts]
 quack = "quack.__main__:main"
+
+# Register our Pygments lexer so Sphinx / Jupyter / mkdocs / Pelican
+# auto-pickup ```quack code blocks once `quack-lang` is installed.
+[project.entry-points."pygments.lexers"]
+quack = "quack.lexer:QuackLexer"
 
 [tool.setuptools.packages.find]
 include = ["quack*"]
