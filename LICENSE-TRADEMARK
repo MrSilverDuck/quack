@@ -1,0 +1,76 @@
+Quack Language Trademark Notice
+===============================
+
+QUACK(TM) (the language and the duck mascot), KIBERKRYA(TM), KRYA(TM),
+NIGHTBOX(TM), SILVERDUCK(TM), and related marks are common-law
+trademarks of NIGHTBOX LLC (Wyoming, EIN 39-4373044, UEI UHCAB6UXXKF2),
+with documented first-use-in-commerce dates.
+
+The open-source license that governs this code DOES NOT grant
+any right to use these trademarks. Apache License 2.0 Section 6 is
+explicit on this point; MIT is silent and does not transfer trademarks.
+
+What this means in practice
+---------------------------
+
+YOU MAY:
+
+  - Fork this repository and redistribute under the open-source license
+  - Modify the code freely, including for commercial use
+  - Reference the original by name as nominative fair use, e.g.
+    "compatible with Quack(TM)" or "fork of Quack(TM) by NIGHTBOX LLC"
+
+YOU MAY NOT:
+
+  - Call your fork "Quack" or any confusingly similar name
+    (especially in the programming-language space)
+  - Use the QUACK, KIBERKRYA, NIGHTBOX, SILVERDUCK marks in your
+    project, product, service, company, package, or domain name
+  - Imply sponsorship, affiliation, or endorsement by NIGHTBOX LLC
+  - Modify or deface logos or wordmarks in a way that misrepresents origin
+
+Required for public forks
+-------------------------
+
+  1. Rename your distribution
+  2. Attribute clearly: "Derived from Quack(TM) by NIGHTBOX LLC,
+     https://github.com/MrSilverDuck/quack"
+  3. Remove our marks from your distribution branding
+     (logos, splash screens, package names, CLI banners)
+  4. You may keep our marks in code comments, docs, attribution, and
+     license texts as long as they refer to the original
+
+Federal Government grant
+------------------------
+
+The United States Government and federal contractors operating under
+FAR / DFARS-governed agreements have a standing nominative fair-use
+license to use the marks for in-scope identification, deployment,
+documentation, evaluation, and description of NIGHTBOX LLC software,
+under FAR 27.404-1, DFARS 252.227-7013, and DFARS 252.227-7014.
+No permission required.
+
+Canonical policy and machine-readable inventory
+-----------------------------------------------
+
+Full policy:    https://nightboxllc.com/LICENSE-TRADEMARK
+Inventory:      https://nightboxllc.com/.well-known/trademark-policy.json
+Misuse / asks:  legal@nightboxllc.com
+
+Inventory of marks (as of 2026-05-08)
+-------------------------------------
+
+  NIGHTBOX(TM)        first use 2025-09-15
+  UNIGPU(TM)          first use 2026-04-15
+  SILVERDUCK(TM)      first use 2026-05-01
+  KIBERKRYA(TM)       first use 2026-05-06
+  KIBERKRYA / Cyrillic first use 2026-05-06
+  SDPC(TM)            first use 2026-05-06
+  QUACK(TM) (language)  asserted via this repo, first commit
+  NB-R14B(TM)         first use 2026-05-01
+  NB-VISION(TM)       first use 2026-04-20
+  NIGHTBOX SHIELD(TM) first use 2026-04-15
+
+USPTO federal registration applications are anticipated upon arrival
+of first federal funding tranche. The (TM) designation is in effect
+until (R) can be substituted post-registration.
